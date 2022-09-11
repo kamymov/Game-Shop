@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+
+            function getAllFactorsFor(remainder) {
+                var factors = [], i;
+
+                for (i = 2; i <= remainder; i++) {
+                    while ((remainder % i) === 0) {
+                        factors.push(i);
+                        remainder /= i;
+                    }
+                }
+
+                return factors;
+            }
+
+            function calculate(x) {
+
+                lastFactorCount = 0;
+                highestNumber = 0;
+
+                while (x) {
+                    currentCount = getAllFactorsFor(x).length;
+
+                    if (currentCount > lastFactorCount) {
+                        lastFactorCount = currentCount;
+                        highestNumber = x;
+                    }
+
+                    x--;
+                }
+
+                return highestNumber;
+            }
+
+            document.write(calculate(8)); //output: 6
+            //document.write(calculate(11)) //output: 8
+
+
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
